@@ -1,0 +1,45 @@
+use tienda;
+-- select nombre from producto; 
+-- select nombre, precio from producto; 
+-- select * from producto; 
+-- select nombre, precio as 'precio euro', round(precio * 1.13, 2) as 'precio dolar' from producto; -- el precio que supongo esta en euro lo convirto a dolares
+-- select nombre as 'nombre producto', concat (precio, '€') as 'euro', concat (round(precio * 1.13, 2), '$') as 'dolar' from producto;
+-- select ucase(nombre), precio from producto;
+-- select lcase(nombre), precio from producto;
+-- select nombre, ucase(left(nombre, 2)) as 'nombre dos letras mayuscula' from fabricante;
+-- select nombre, round(precio + 0.005, 2) from producto; -- se suma 0.005 para disminuir al minimo el error de division flotante
+-- select nombre, truncate(precio, 0) from producto;
+-- select codigo_fabricante from producto;
+-- select distinct codigo_fabricante from producto;
+-- select * from fabricante order by nombre;
+-- select * from fabricante order by nombre desc;
+-- select nombre, precio from producto order by nombre;
+-- select nombre, precio from producto order by precio desc;
+-- select * from fabricante limit 5;
+-- select * from fabricante limit 3, 2;
+-- select nombre, precio from producto order by precio limit 1;
+-- select nombre, precio from producto order by precio desc limit 1;
+-- select nombre from producto where codigo_fabricante = 2;
+-- select p.nombre, p.precio, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo;
+-- select f.nombre as 'fabricante', p.nombre, precio from producto p join fabricante f on p.codigo_fabricante = f.codigo order by f.nombre;
+-- select p.codigo, p.nombre, p.codigo_fabricante, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo;
+-- select p.nombre, p.precio, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo order by precio limit 1;
+-- select p.nombre, p.precio, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo order by precio desc limit 1;
+-- select p.nombre, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre = 'Lenovo';
+-- select p.nombre, p.precio, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre = 'Crucial' and precio >= 200;
+-- select p.nombre, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre = 'Asus' or f.nombre = 'Hewlett-Packard' or f.nombre = 'Seagate';
+-- select p.nombre, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre in ('Asus', 'Hewlett-Packard', 'Seagate');
+-- select p.nombre, p.precio, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre like '%e';
+-- select p.nombre, p.precio, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre like 'w%' or f.nombre like '%w' or f.nombre like '%w%';
+-- select p.precio, p.nombre, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where p.precio >= 180 order by precio desc;
+-- select p.nombre, p.precio, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where p.precio >= 180 order by p.nombre;
+-- select distinct p.codigo_fabricante, f.nombre from producto p join fabricante f on p.codigo_fabricante = f.codigo;
+-- select f.codigo, f.nombre as 'fabricante', p.nombre from producto p right join fabricante f on f.codigo = p.codigo_fabricante;
+-- select f.codigo, f.nombre as 'fabricante', p.nombre from producto p right join fabricante f on f.codigo = p.codigo_fabricante where p.nombre is null;
+-- select f.codigo, f.nombre as 'fabricante', p.nombre from producto p left outer join fabricante f on f.codigo = p.codigo_fabricante where f.nombre = 'Lenovo';
+-- select p.codigo, p.nombre, p.precio, p.codigo_fabricante, f.nombre as 'fabricante'  from producto p  right outer join fabricante f on p.codigo_fabricante = f.codigo where p.precio = (select max(p.precio) from producto p left outer join fabricante f on p.codigo_fabricante = f.codigo where f.nombre = 'Lenovo');
+-- select max(p.precio) as 'mayor_precio', p.nombre, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre = 'Lenovo';
+-- select min(p.precio) as 'menor_precio', p.nombre, f.nombre as 'fabricante' from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre = 'Hewlett-Packard';
+-- select p.codigo, p.nombre, p.precio, p.codigo_fabricante, f.nombre as 'fabricante'  from producto p join fabricante f on p.codigo_fabricante = f.codigo where p.precio >= (select max(p.precio) from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre = 'Lenovo');
+-- select f.nombre as 'fabricante', p.nombre, p.precio from fabricante f join producto p on f.codigo = p.codigo_fabricante where f.nombre = 'Asus' and p.precio >= (select avg(precio) from producto p join fabricante f on p.codigo_fabricante = f.codigo where f.nombre = 'Asus');
+
